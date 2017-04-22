@@ -2,6 +2,7 @@ class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
   attr_accessor :twitter_client
 
+
   def twitter_client
     @twitter_client ||= Twitter::REST::Client.new do |config|
       config.consumer_key        = "QmnF0N1nALWJCshk5ecUWXG2n"
@@ -12,7 +13,8 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.json
   def index
-    @questions = Question.where(is_answered: true)
+    # @questions = Question.where(is_answered: true)
+    @questions = Question.all
   end
 
   # GET /questions/1
