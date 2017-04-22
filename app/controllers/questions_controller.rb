@@ -1,10 +1,19 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
+  attr_accessor :twitter_client
+
+  def twitter_client
+    @twitter_client ||= Twitter::REST::Client.new do |config|
+      config.consumer_key        = "QmnF0N1nALWJCshk5ecUWXG2n"
+      config.consumer_secret     = "N7PoX41YI7YHinZw5qI9XmOskX0nzw60GPtMuQGb7UY6oNh853"
+    end
+  end
 
   # GET /questions
   # GET /questions.json
   def index
     @questions = Question.all
+    @tweeter = twitter_client.search('#vomit').take(3).collect
   end
 
   # GET /questions/1
