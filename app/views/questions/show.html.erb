@@ -1,27 +1,43 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <%= @tweets.each do |tweet| %>
+      <div class="col-sm-12 col-md-4">
+        <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @question.title %>
-</p>
+        <p>
+          <strong>Title:</strong>
+          <%= @question.title %>
+        </p>
 
-<p>
-  <strong>Hashtag:</strong>
-  <%= @question.hashtag %>
-</p>
+        <p>
+          <strong>Hashtag:</strong>
+          <%= @question.hashtag %>
+        </p>
 
-<p>
-  <strong>Is answered:</strong>
-  <%= @question.is_answered %>
-</p>
+        <p>
+          <strong>Is answered:</strong>
+          <%= @question.is_answered %>
+        </p>
 
-<%= link_to 'Edit', edit_question_path(@question) %> |
-<%= link_to 'Back', questions_path %>
+        <%= link_to 'Edit', edit_question_path(@question) %> |
+        <%= link_to 'Back', questions_path %>
 
+      
+        <img src="<%= tweet.user.profile_banner_url %>" alt="">
+        <img src="<%= tweet.user.profile_image_url %>" alt="">
+        <p>Screen name: <%= tweet.user.screen_name %></p>
+        <p>Name: <%= tweet.user.name %></p>
+        
+        <p>User description: <%= tweet.user.description %></p>
+        <p><%= tweet.created_at %></p>
+        <p><%= tweet.text %></p>
 
-<%= @tweets.each do |tweet| %>
-	<img src="<%= tweet.user.profile_banner_url %>" alt="">
-	<h1>Twit: <%= tweet.user.screen_name %></h1>
-	<p><%= tweet.text %></p>
-	<%#= debug(tweet) %>
-<% end %>
+        <p>Followers <%= tweet.user.followers_count %></p>
+        <p>end</p>
+      
+
+      </div>
+    <% end %>
+  </div>
+</div>
+
