@@ -19,6 +19,7 @@ class QuestionsController < ApplicationController
   # GET /questions/1
   # GET /questions/1.json
   def show
+    @tweets = twitter_client.search("##{@question.hashtag}").take(3).collect
   end
 
   # GET /questions/new

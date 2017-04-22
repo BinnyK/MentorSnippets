@@ -17,3 +17,11 @@
 
 <%= link_to 'Edit', edit_question_path(@question) %> |
 <%= link_to 'Back', questions_path %>
+
+
+<%= @tweets.each do |tweet| %>
+	<img src="<%= tweet.user.profile_banner_url %>" alt="">
+	<h1>Twit: <%= tweet.user.screen_name %></h1>
+	<p><%= tweet.text %></p>
+	<%= debug(tweet) %>
+<% end %>
