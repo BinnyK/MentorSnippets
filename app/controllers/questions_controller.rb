@@ -12,14 +12,13 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.json
   def index
-    @questions = Question.all
-    @tweeter = twitter_client.search('#vomit').take(3).collect
+    @questions = Question.where(is_answered: true)
   end
 
   # GET /questions/1
   # GET /questions/1.json
   def show
-    @tweets = twitter_client.search("##{@question.hashtag}").take(3).collect
+    @tweets = twitter_client.search("#" + "#{@question.hashtag}").take(3).collect
   end
 
   # GET /questions/new
