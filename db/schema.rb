@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170422065719) do
+ActiveRecord::Schema.define(version: 20170423062447) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "mentors", force: :cascade do |t|
+    t.string   "twitter_id_str"
+    t.string   "name"
+    t.string   "screen_name"
+    t.text     "description"
+    t.string   "url"
+    t.integer  "followers_count",              default: 0
+    t.integer  "friends_count",                default: 0
+    t.string   "profile_background_color"
+    t.string   "profile_background_image_url"
+    t.string   "profile_banner_url"
+    t.string   "profile_image_url"
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+  end
 
   create_table "questions", force: :cascade do |t|
     t.string   "title"
