@@ -15,7 +15,7 @@ class QuestionsController < ApplicationController
   def index
     # @questions = Question.where(is_answered: true)
     @questions = Question.all
-    @test = twitter_client.user('nadal')
+    @test = twitter_client.user('atpworldtour')
 
   end
 

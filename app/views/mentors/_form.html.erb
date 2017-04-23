@@ -1,3 +1,5 @@
+<%= link_to "Update Twitter user! (still needs fixing to check tweet users etc)", save_mentor_path(id: mentor.id) %>
+
 <%= form_for(mentor) do |f| %>
   <% if mentor.errors.any? %>
     <div id="error_explanation">

@@ -1,5 +1,5 @@
 class MentorsController < ApplicationController
-  before_action :set_mentor, only: [:show, :edit, :update, :destroy]
+  before_action :set_mentor, only: [:show, :edit, :update, :destroy, :save_mentor]
   attr_accessor :twitter_client
 
 
@@ -11,11 +11,42 @@ class MentorsController < ApplicationController
   end
 
   def save_mentor
-    @data = twitter_client.user('nadal')
-    
-    Mentor.create(twitter_id_str: @data[:attrs][:id_str], name: @data[:attrs][:name], screen_name: @data[:attrs][:screen_name])
+    @test_name = 'ATPWorldTour'
+    @data = twitter_client.user(@test_name)
+
+    if (Mentor.exists?(twitter_id_str: @data[:attrs][:id_str]) && @mentor.screen_name == @test_name)
+      flash[:alert] = "This Mentor already exists!"
+
+      @mentor.update(twitter_id_str:               @data[:attrs][:id_str])
+      @mentor.update(name:                         @data[:attrs][:name])
+      @mentor.update(screen_name:                  @data[:attrs][:screen_name])
+      @mentor.update(description:                  @data[:attrs][:description])
+      @mentor.update(url:                          @data[:attrs][:url])
+      @mentor.update(followers_count:              @data[:attrs][:followers_count])
+      @mentor.update(friends_count:                @data[:attrs][:friends_count])
+      @mentor.update(profile_background_color:     @data[:attrs][:profile_background_color])
+      @mentor.update(profile_background_image_url: @data[:attrs][:profile_background_image_url])
+      @mentor.update(profile_banner_url:           @data[:attrs][:profile_banner_url])
+      @mentor.update(profile_image_url:            @data[:attrs][:profile_image_url])
+
+    else
+      Mentor.create(twitter_id_str:               @data[:attrs][:id_str], 
+                    name:                         @data[:attrs][:name], 
+                    screen_name:                  @data[:attrs][:screen_name],
+                    description:                  @data[:attrs][:description],
+                    url:                          @data[:attrs][:url],
+                    followers_count:              @data[:attrs][:followers_count],
+                    friends_count:                @data[:attrs][:friends_count],
+                    profile_background_color:     @data[:attrs][:profile_background_color],
+                    profile_background_image_url: @data[:attrs][:profile_background_image_url],
+                    profile_banner_url:           @data[:attrs][:profile_banner_url],
+                    profile_image_url:            @data[:attrs][:profile_image_url],
+                    )  
+
+    end
     
     redirect_to mentors_path
+    
 
   end
 
