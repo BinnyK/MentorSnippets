@@ -1,43 +1,36 @@
-<div class="container">
-  <div class="row">
-    <%= @tweets.each do |tweet| %>
-      <div class="col-sm-12 col-md-4">
-        <p id="notice"><%= notice %></p>
 
-        <p>
-          <strong>Title:</strong>
-          <%= @question.title %>
-        </p>
 
-        <p>
-          <strong>Hashtag:</strong>
-          <%= @question.hashtag %>
-        </p>
 
-        <p>
-          <strong>Is answered:</strong>
-          <%= @question.is_answered %>
-        </p>
-
-        <%= link_to 'Edit', edit_question_path(@question) %> |
-        <%= link_to 'Back', questions_path %>
-
-      
-        <img src="<%= tweet.user.profile_banner_url %>" alt="">
-        <img src="<%= tweet.user.profile_image_url %>" alt="">
-        <p>Screen name: <%= tweet.user.screen_name %></p>
-        <p>Name: <%= tweet.user.name %></p>
+<div class="container-fluid">
         
-        <p>User description: <%= tweet.user.description %></p>
-        <p><%= tweet.created_at %></p>
-        <p><%= tweet.text %></p>
-
-        <p>Followers <%= tweet.user.followers_count %></p>
-        <p>end</p>
-      
-
-      </div>
-    <% end %>
+  <!-- Start: Header -->
+  <div class="row hero-header" id="home">
+    <div class="container">
+      <h1 class="text-center question-header"><%= @question.title %></h1>
+      <h3 class="text-center qeustion-hash">#<%= @question.hashtag %></h3>
+    </div>
   </div>
+  <!-- End: Header -->
+
 </div>
 
+<div class="container">
+
+  <!-- Start: Speakers -->
+  <div class="row me-row content-ct speaker" id="speakers">
+    <h2 class="row-title">Tech Advice</h2>
+    <% @tweets.each do |tweet| %>
+      <div class="col-md-4 col-sm-6 feature">
+        <img src="<%= tweet.user.profile_image_url %>" class="speaker-img" style="border: 4px solid #<%= tweet.user.profile_link_color %>">
+        <h3><%= tweet.user.screen_name %></h3>
+        <p><%= tweet.text %></p>
+        <ul class="speaker-social">
+          <li><a href="#"><span class="ti-facebook"></span></a></li>
+          <li><a href="#"><span class="ti-twitter-alt"></span></a></li>
+          <li><a href="#"><span class="ti-linkedin"></span></a></li>
+        </ul>
+      </div>
+    <% end %>
+    <!-- End: Speakers -->
+  </div>
+</div>
