@@ -26,49 +26,6 @@ $light-purple: #A090FF;
 $light-brown: #9C8272;
 $light-grey: #848BA0;
 
-// .mentor-section {
-	
-// 	.author_image {
-// 		height: 90px;
-// 		width: 90px;
-// 		display: block;
-// 		margin: 0 auto;
-// 		border-radius: 50%;
-// 		margin-top: 30px;
-
-//     border-width: 3px;
-//     border-color: $light-blue;
-//     border-style: solid;
-//     border-radius: 9999px;
-// 	}
-	
-// 	.panel-title {
-// 		text-align: center;
-// 		margin-top: 20px;
-// 	}
-
-// 	.panel-subtitle {
-// 		font-size: 15px;
-// 		margin-top: 10px;
-// 		text-align: center;
-// 	}
-
-// 	.panel .panel-heading {
-// 		border-radius: 0;
-// 		background-color: $light-blue;
-		
-// 		a {
-// 			color: white;
-// 		}
-// 	}
-// 	.panel .panel-heading.admin {
-// 		background-color: $light-orange;
-// 		border-radius: 0;
-// 	}
-
-
-
-// }
 
 .question-hash {
 	margin-top: 50px;
@@ -79,7 +36,6 @@ $light-grey: #848BA0;
     padding-top: 60px;
     padding-bottom: 60px;
 }
-
 
 
 body {
@@ -193,8 +149,8 @@ a:hover, a:focus, a:active, a:visited {
 
 .hero-header {
 	background: #016cc7;
-	min-height: 600px;
-	padding: 13em;
+	min-height: 400px;
+	padding: 7em;
 	color: #fff;
 }
 .hero-header h1 {
