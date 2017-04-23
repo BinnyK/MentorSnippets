@@ -15,14 +15,14 @@ class QuestionsController < ApplicationController
   def index
     # @questions = Question.where(is_answered: true)
     @questions = Question.all
-    @test = twitter_client.user('atpworldtour')
+    @test = twitter_client.search("#learntocode").take(1)
 
   end
 
   # GET /questions/1
   # GET /questions/1.json
   def show
-    @tweets = twitter_client.search("#" + "#{@question.hashtag}").take(3).collect
+    @tweets = twitter_client.search("#" + "#{@question.hashtag}").take(9)
   end
 
   # GET /questions/new

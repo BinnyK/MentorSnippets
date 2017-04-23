@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Tweets</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>T id str</th>
+      <th>T text</th>
+      <th>T created at</th>
+      <th>T user id str</th>
+      <th>T screen name</th>
+      <th>Question</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tweets.each do |tweet| %>
+      <tr>
+        <td><%= tweet.t_id_str %></td>
+        <td><%= tweet.t_text %></td>
+        <td><%= tweet.t_created_at %></td>
+        <td><%= tweet.t_user_id_str %></td>
+        <td><%= tweet.t_screen_name %></td>
+        <td><%= tweet.question_id %></td>
+        <td><%= link_to 'Show', tweet %></td>
+        <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
+        <td><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tweet', new_tweet_path %>

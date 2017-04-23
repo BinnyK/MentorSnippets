@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :tweets
   resources :mentors
   root 'questions#index'
 

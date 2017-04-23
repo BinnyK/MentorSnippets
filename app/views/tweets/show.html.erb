@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>T id str:</strong>
+  <%= @tweet.t_id_str %>
+</p>
+
+<p>
+  <strong>T text:</strong>
+  <%= @tweet.t_text %>
+</p>
+
+<p>
+  <strong>T created at:</strong>
+  <%= @tweet.t_created_at %>
+</p>
+
+<p>
+  <strong>T user id str:</strong>
+  <%= @tweet.t_user_id_str %>
+</p>
+
+<p>
+  <strong>T screen name:</strong>
+  <%= @tweet.t_screen_name %>
+</p>
+
+<p>
+  <strong>Question:</strong>
+  <%= @tweet.question_id %>
+</p>
+
+<%= link_to 'Edit', edit_tweet_path(@tweet) %> |
+<%= link_to 'Back', tweets_path %>
