@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Twitter id str:</strong>
+  <%= @mentor.twitter_id_str %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @mentor.name %>
+</p>
+
+<p>
+  <strong>Screen name:</strong>
+  <%= @mentor.screen_name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @mentor.description %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @mentor.url %>
+</p>
+
+<p>
+  <strong>Followers count:</strong>
+  <%= @mentor.followers_count %>
+</p>
+
+<p>
+  <strong>Friends count:</strong>
+  <%= @mentor.friends_count %>
+</p>
+
+<p>
+  <strong>Profile background color:</strong>
+  <%= @mentor.profile_background_color %>
+</p>
+
+<p>
+  <strong>Profile background image url:</strong>
+  <%= @mentor.profile_background_image_url %>
+</p>
+
+<p>
+  <strong>Profile banner url:</strong>
+  <%= @mentor.profile_banner_url %>
+</p>
+
+<p>
+  <strong>Profile image url:</strong>
+  <%= @mentor.profile_image_url %>
+</p>
+
+<%= link_to 'Edit', edit_mentor_path(@mentor) %> |
+<%= link_to 'Back', mentors_path %>

@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  twitter_id_str: MyString
+  name: MyString
+  screen_name: MyString
+  description: MyText
+  url: MyString
+  followers_count: 1
+  friends_count: 1
+  profile_background_color: MyString
+  profile_background_image_url: MyString
+  profile_banner_url: MyString
+  profile_image_url: MyString
+
+two:
+  twitter_id_str: MyString
+  name: MyString
+  screen_name: MyString
+  description: MyText
+  url: MyString
+  followers_count: 1
+  friends_count: 1
+  profile_background_color: MyString
+  profile_background_image_url: MyString
+  profile_banner_url: MyString
+  profile_image_url: MyString

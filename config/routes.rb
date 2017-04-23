@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :mentors
   root 'questions#index'
   
   resources :questions
