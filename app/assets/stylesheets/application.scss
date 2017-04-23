@@ -74,6 +74,12 @@ $light-grey: #848BA0;
 	margin-top: 50px;
 }
 
+.question-list {
+    box-sizing: border-box;
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
 
 
 body {
@@ -277,13 +283,22 @@ a span.ti-twitter-alt {
 
 
 .nav-tabs {
+    margin: 0 auto;
     margin-top: 20px;
+    display: table;
+
+
+    .presentation {
+        margin: 0 auto;
+        float: left;
+    }
 }
 .schedule .media {
 	margin-top: 4em;
 }
 .schedule .media-object {
 	max-width: 100px;
+    margin-right: 10px;
 }
 .schedule .media-heading {
 	font-weight: 600;
@@ -424,6 +439,7 @@ ul.footer-menu li a:hover {
         margin-right: 9px;
     }
 }
+
 
 
 

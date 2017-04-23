@@ -1,40 +1,178 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12">
-      <p id="notice"><%= notice %></p>
 
-      <h1>Questions</h1>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Hashtag</th>
-            <th>Is answered</th>
-            <th colspan="3"></th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <% @questions.each do |question| %>
-            <tr>
-              <td><%= question.title %></td>
-              <td><%= question.hashtag %></td>
-              <td><%= question.is_answered %></td>
-              <td><%= link_to 'Show', question %></td>
-              <td><%= link_to 'Edit', edit_question_path(question) %></td>
-              <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-
-      <br>
-
-      <%= link_to 'New Question', new_question_path %>
-
+<div class="container-fluid">
+        
+  <!-- Start: Header -->
+  <div class="row hero-header" id="home">
+    <div class="container">
+      <h1 class="text-center question-header">Questions</h1>
+      <h3 class="text-center qeustion-hash">Total: <%= @questions.count %></h3>
     </div>
   </div>
+  <!-- End: Header -->
+
 </div>
 
 
+<!-- Start: Schedule -->
+<div class="container">
+  <div class="row me-row schedule" id="schedule">
+    <!-- <h2 class="row-title content-ct">Pick from the options below</h2> -->
+    
+    <div class="col-md-12">
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#day-1" aria-controls="home" role="tab" data-toggle="tab">Questions</a></li>
+        <li role="presentation"><a href="#day-2" aria-controls="profile" role="tab" data-toggle="tab">Mentors</a></li>
+        <li role="presentation"><a href="#day-3" aria-controls="messages" role="tab" data-toggle="tab">Another thing</a></li>
+      </ul>
+
+      <!-- Tab panes -->
+      <div class="tab-content">
+
+        <div role="tabpanel" class="tab-pane fade in active" id="day-1">
+          <div class="row">
+            <% @questions.each do |question| %>
+            <div class="col-md-6 col-md-offset-3">
+              <div class="media">
+                <div class="media-left">
+                  <a href="#">
+                    <img class="media-object" src="http://placehold.it/150x150" alt="...">
+                  </a>
+                </div>
+                <div class="media-body">
+                  <h4 class="media-heading"><%= link_to question.title, question %></h4>
+                  <p>#<%= question.hashtag %></p>
+                  <p>Very brief description </p>
+                </div>
+              </div>
+            </div>
+            <% end %>
+
+            
+          </div>
+        </div>
+
+        <div role="tabpanel" class="tab-pane fade" id="day-2">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="media">
+                <div class="media-left">
+                  <a href="#">
+                    <img class="media-object" src="http://placehold.it/150x150" alt="...">
+                  </a>
+                </div>
+                <div class="media-body">
+                  <h4 class="media-heading">Dan Draper</h4>
+                  <h5>MAKING DOG FOOD PART OF A BALANCED DIET</h5>
+                  <p>Simon is designer and partner at Fictivekin and has worked in a variety of situations for bands, record labels, governments, polar explorers, and most other things. </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="media">
+                <div class="media-left">
+                  <a href="#">
+                    <img class="media-object" src="http://placehold.it/150x150" alt="...">
+                  </a>
+                </div>
+                <div class="media-body">
+                  <h4 class="media-heading">10:45am to 11:30am</h4>
+                  <h5>HANDS-ON WEB AUDIO</h5>
+                  <p>Simon is designer and partner at Fictivekin and has worked in a variety of situations for bands, record labels, governments, polar explorers, and most other things. </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="media">
+                <div class="media-left">
+                  <a href="#">
+                    <img class="media-object" src="http://placehold.it/150x150" alt="...">
+                  </a>
+                </div>
+                <div class="media-body">
+                  <h4 class="media-heading">12:00pm to 01:30pm</h4>
+                  <h5>CONVERSION RATE OPTIMIZATION TECHNIQUES IN ECOMMERCE</h5>
+                  <p>Simon is designer and partner at Fictivekin and has worked in a variety of situations for bands, record labels, governments, polar explorers, and most other things. </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="media">
+                <div class="media-left">
+                  <a href="#">
+                    <img class="media-object" src="http://placehold.it/150x150" alt="...">
+                  </a>
+                </div>
+                <div class="media-body">
+                  <h4 class="media-heading">02:00pm to 03.30pm</h4>
+                  <h5>PAPER PROTOTYPING APPLICATIONS</h5>
+                  <p>Simon is designer and partner at Fictivekin and has worked in a variety of situations for bands, record labels, governments, polar explorers, and most other things. </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="day-3">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="media">
+                <div class="media-left">
+                  <a href="#">
+                    <img class="media-object" src="http://placehold.it/150x150" alt="...">
+                  </a>
+                </div>
+                <div class="media-body">
+                  <h4 class="media-heading">10am to 10:30am</h4>
+                  <h5>THE DESIGNER’S GUIDE TO BEING ESSENTIAL</h5>
+                  <p>Simon is designer and partner at Fictivekin and has worked in a variety of situations for bands, record labels, governments, polar explorers, and most other things. </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="media">
+                <div class="media-left">
+                  <a href="#">
+                    <img class="media-object" src="http://placehold.it/150x150" alt="...">
+                  </a>
+                </div>
+                <div class="media-body">
+                  <h4 class="media-heading">10:45am to 11:30am</h4>
+                  <h5>THE DESIGNER’S GUIDE TO BEING ESSENTIAL</h5>
+                  <p>Simon is designer and partner at Fictivekin and has worked in a variety of situations for bands, record labels, governments, polar explorers, and most other things. </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="media">
+                <div class="media-left">
+                  <a href="#">
+                    <img class="media-object" src="http://placehold.it/150x150" alt="...">
+                  </a>
+                </div>
+                <div class="media-body">
+                  <h4 class="media-heading">12:00pm to 01:30pm</h4>
+                  <h5>THE DESIGNER’S GUIDE TO BEING ESSENTIAL</h5>
+                  <p>Simon is designer and partner at Fictivekin and has worked in a variety of situations for bands, record labels, governments, polar explorers, and most other things. </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="media">
+                <div class="media-left">
+                  <a href="#">
+                    <img class="media-object" src="http://placehold.it/150x150" alt="...">
+                  </a>
+                </div>
+                <div class="media-body">
+                  <h4 class="media-heading">02:00pm to 03.30pm</h4>
+                  <h5>THE DESIGNER’S GUIDE TO BEING ESSENTIAL</h5>
+                  <p>Simon is designer and partner at Fictivekin and has worked in a variety of situations for bands, record labels, governments, polar explorers, and most other things. </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
