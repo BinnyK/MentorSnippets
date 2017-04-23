@@ -11,10 +11,10 @@ class MentorsController < ApplicationController
   end
 
   def save_mentor
-    @test_name = 'ATPWorldTour'
-    @data = twitter_client.user(@test_name)
+    @test_name = 'RogerFederer'
+    @data = twitter_client.user(@test_name.downcase)
 
-    if (Mentor.exists?(twitter_id_str: @data[:attrs][:id_str]) && @mentor.screen_name == @test_name)
+    if (Mentor.exists?(twitter_id_str: @data[:attrs][:id_str]) && @mentor.screen_name.downcase == @test_name.downcase)
       flash[:alert] = "This Mentor already exists!"
 
       @mentor.update(twitter_id_str:               @data[:attrs][:id_str])
