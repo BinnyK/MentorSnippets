@@ -15,6 +15,8 @@ class QuestionsController < ApplicationController
   def index
     # @questions = Question.where(is_answered: true)
     @questions = Question.all
+    @test = twitter_client.user('nadal')
+
   end
 
   # GET /questions/1

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :mentors
   root 'questions#index'
+
+  get 'save_mentor', to: 'mentors#save_mentor'
   
   resources :questions
   devise_for :users

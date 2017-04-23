@@ -1,5 +1,39 @@
 class MentorsController < ApplicationController
   before_action :set_mentor, only: [:show, :edit, :update, :destroy]
+  attr_accessor :twitter_client
+
+
+  def twitter_client
+    @twitter_client ||= Twitter::REST::Client.new do |config|
+      config.consumer_key        = "QmnF0N1nALWJCshk5ecUWXG2n"
+      config.consumer_secret     = "N7PoX41YI7YHinZw5qI9XmOskX0nzw60GPtMuQGb7UY6oNh853"
+    end
+  end
+
+  def save_mentor
+    @data = twitter_client.user('nadal')
+    
+    Mentor.create(twitter_id_str: @data[:attrs][:id_str], name: @data[:attrs][:name], screen_name: @data[:attrs][:screen_name])
+    
+    redirect_to mentors_path
+
+  end
+
+
+  #   t.string   "twitter_id_str"
+  #   t.string   "name"
+  #   t.string   "screen_name"
+  #   t.text     "description"
+  #   t.string   "url"
+  #   t.integer  "followers_count",              default: 0
+  #   t.integer  "friends_count",                default: 0
+  #   t.string   "profile_background_color"
+  #   t.string   "profile_background_image_url"
+  #   t.string   "profile_banner_url"
+  #   t.string   "profile_image_url"
+  #   t.datetime "created_at",                               null: false
+  #   t.datetime "updated_at",                               null: false
+
 
   # GET /mentors
   # GET /mentors.json
