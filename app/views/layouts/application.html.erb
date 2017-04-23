@@ -11,6 +11,8 @@
   <body>
     
     <%= render 'partials/nav' %>
+    <p id="alert"><%= flash[:alert] %></p>
+    <p id="notice"><%= flash[:notice] %></p>
     <%= yield %>
     
     <!-- Start: Footer -->
