@@ -1,2 +1,3 @@
 class Mentor < ApplicationRecord
+
 end

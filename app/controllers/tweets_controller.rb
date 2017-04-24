@@ -13,19 +13,20 @@ class TweetsController < ApplicationController
   def retrieve_tweets
     
     @question = Question.find(params[:id])
-
     @test_name = @question.hashtag
-    @data = twitter_client.search(@test_name).take(9)
 
+    @data = twitter_client.search(@test_name).take(12)
     @data.each do |data|
-      if (Tweet.exists?(t_id_str: data[:attrs][:id_str]) && @tweet.screen_name.downcase == @test_name.downcase)
+
+      if Tweet.exists?(t_id_str: data[:attrs][:id_str])
+
+        @single_tweet = Tweet.where(t_id_str: data[:attrs][:id_str])
         flash[:alert] = "This Tweet already exists!"
 
-        @tweet.update(t_id_str:                      data[:attrs][:id_str])
-        @tweet.update(t_text:                        data[:attrs][:text])
-        @tweet.update(t_user_id_str:                 data[:attrs][:user][:id_str])
-        @tweet.update(t_screen_name:                 data[:attrs][:user][:screen_name])
-        @tweet.update(t_created_at:                  data[:attrs][:created_at])
+        @single_tweet.update(t_text:                 data[:attrs][:text])
+        @single_tweet.update(t_user_id_str:          data[:attrs][:user][:id_str])
+        @single_tweet.update(t_screen_name:          data[:attrs][:user][:screen_name])
+        @single_tweet.update(t_created_at:           data[:attrs][:created_at])
 
       else
         Tweet.create(t_id_str:                       data[:attrs][:id_str], 
@@ -39,7 +40,6 @@ class TweetsController < ApplicationController
     end
     
     redirect_to question_path(params[:id])
-
   end
 
 
