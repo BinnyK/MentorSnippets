@@ -15,7 +15,7 @@ class QuestionsController < ApplicationController
   def index
     # @questions = Question.where(is_answered: true)
     @questions = Question.all
-    @test = twitter_client.search("#learntocode").take(1)
+    # @test = twitter_client.search("#learntocode").take(1)
 
   end
 
@@ -23,7 +23,7 @@ class QuestionsController < ApplicationController
   # GET /questions/1.json
   def show
     # @tweets = twitter_client.search("#" + "#{@question.hashtag}").take(9)
-    @tweets = Tweet.all
+    @tweets = Tweet.where(question_id: params[:id])
   end
 
   # GET /questions/new

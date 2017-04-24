@@ -34,7 +34,9 @@
 </div>
  -->
 
-<%= link_to "Get tweets!", retrieve_tweets_path %>
+<%= link_to "Get tweets!", retrieve_tweets_path(id: @question.id) %>
+
+<p>THIS QUESTIONS ID IS: <%= @question.id %></p>
 
 <div class="container">
   <div class="row me-row content-ct speaker" id="speakers">

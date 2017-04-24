@@ -13,6 +13,7 @@ class TweetsController < ApplicationController
   def retrieve_tweets
     
     @question = Question.find(params[:id])
+
     @test_name = @question.hashtag
     @data = twitter_client.search(@test_name).take(9)
 
@@ -32,7 +33,7 @@ class TweetsController < ApplicationController
                       t_user_id_str:                 data[:attrs][:user][:id_str],
                       t_screen_name:                 data[:attrs][:user][:screen_name],
                       t_created_at:                  data[:attrs][:created_at],
-                      question_id:                   params[:id]
+                      question_id:                   @question.id
                       )  
       end
     end
