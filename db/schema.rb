@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170424022826) do
+ActiveRecord::Schema.define(version: 20170424070655) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20170424022826) do
     t.string   "t_user_prof_img_url"
     t.string   "t_user_prof_bg_col"
     t.integer  "t_favorite_count",    default: 0
+    t.string   "t_user_prof_ban_url"
   end
 
   create_table "users", force: :cascade do |t|

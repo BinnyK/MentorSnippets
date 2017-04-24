@@ -21,7 +21,6 @@ class TweetsController < ApplicationController
       if Tweet.exists?(t_id_str: data[:attrs][:id_str])
 
         @single_tweet = Tweet.where(t_id_str: data[:attrs][:id_str])
-        flash[:alert] = "This Tweet already exists!"
 
         @single_tweet.update(t_text:                 data[:attrs][:text])
         @single_tweet.update(t_user_id_str:          data[:attrs][:user][:id_str])
@@ -30,6 +29,7 @@ class TweetsController < ApplicationController
 
         @single_tweet.update(t_user_prof_img_url:    data[:attrs][:user][:profile_image_url])
         @single_tweet.update(t_user_prof_bg_col:     data[:attrs][:user][:profile_background_color])
+        @single_tweet.update(t_user_prof_ban_url:    data[:attrs][:user][:profile_banner_url])
         @single_tweet.update(t_favorite_count:       data[:attrs][:favorite_count])
 
       else
@@ -38,6 +38,7 @@ class TweetsController < ApplicationController
                       t_screen_name:                 data[:attrs][:user][:screen_name],
                       t_user_id_str:                 data[:attrs][:user][:id_str],
                       t_user_prof_img_url:           data[:attrs][:user][:profile_image_url],
+                      t_user_prof_ban_url:           data[:attrs][:user][:profile_banner_url],
                       t_user_prof_bg_col:            data[:attrs][:user][:profile_background_color],
                       t_favorite_count:              data[:attrs][:favorite_count],
                       t_created_at:                  data[:attrs][:created_at],
@@ -47,6 +48,7 @@ class TweetsController < ApplicationController
     end
     
     redirect_to question_path(params[:id])
+    flash[:alert] = "Updated Tweets"
   end
 
 
