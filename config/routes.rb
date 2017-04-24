@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   resources :tweets
   resources :mentors
-  root 'mentors#mentor_signup'
+  root 'mentors#index'
 
-  get '/be-a-mentor', to: 'mentors#mentor_signup'
+  # get '/be-a-mentor', to: 'mentors#mentor_signup'
 
 
   get 'update_mentor', to: 'mentors#update_mentor'
