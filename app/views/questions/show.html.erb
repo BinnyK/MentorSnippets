@@ -14,50 +14,26 @@
 
 </div>
 
-<!-- 
 <div class="container">
   <div class="row me-row content-ct speaker" id="speakers">
-    <h2 class="row-title">Tech Advice</h2>
-    <%# @tweets.each do |tweet| %>
-      <div class="col-md-4 col-sm-6 feature">
-        <img src="<%#= tweet.user.profile_image_url %>" class="speaker-img" style="border: 4px solid #<%#= tweet.user.profile_link_color %>">
-        <h3><%#= tweet.user.screen_name %></h3>
-        <p><%#= tweet.text %></p>
-        <ul class="speaker-social">
-          <li><a href="#"><span class="ti-facebook"></span></a></li>
-          <li><a href="#"><span class="ti-twitter-alt"></span></a></li>
-          <li><a href="#"><span class="ti-linkedin"></span></a></li>
-        </ul>
-      </div>
-    <%# end %>
-  </div>
-</div>
- -->
-
-<%= link_to "Get tweets!", retrieve_tweets_path(id: @question.id) %>
-
-<p>THIS QUESTIONS ID IS: <%= @question.id %></p>
-
-<div class="container">
-  <div class="row me-row content-ct speaker" id="speakers">
-    <h2 class="row-title">Tech Advice</h2>
+  <%= link_to "Get tweets!", retrieve_tweets_path(id: @question.id) %>
+    <h2 class="row-title">Mentors</h2>
     <% @tweets.each do |tweet| %>
-      <div class="col-md-4 col-sm-6 feature">
-        <img src="<%=tweet.t_user_prof_img_url %>" alt="profile_img" class="speaker-img" style="border: 4px solid #<%= tweet.t_user_prof_bg_col %>;">
+      <div class="col-sm-6 col-md-4 col-lg-3 feature">
+        <div class="mentor-banner" style="<%= set_tweet_bg(tweet)%>">
+        </div>
+        <img src="<%= tweet.t_user_prof_img_url %>" class="speaker-img" style="border: 4px solid <%= tweet.t_user_prof_bg_col %>;">
         <h3><%= tweet.t_screen_name %></h3>
         <p><%= tweet.t_text %></p>
-        <ul class="speaker-social">
+        <!-- <ul class="speaker-social">
           <li><a href="#"><span class="ti-facebook"></span></a></li>
           <li><a href="#"><span class="ti-twitter-alt"></span></a></li>
           <li><a href="#"><span class="ti-linkedin"></span></a></li>
-        </ul>
+        </ul> -->
       </div>
     <% end %>
   </div>
-</div>
-
-
-
+</div>  
 
 
 

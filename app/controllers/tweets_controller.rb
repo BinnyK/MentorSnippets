@@ -15,7 +15,7 @@ class TweetsController < ApplicationController
     @question = Question.find(params[:id])
     @test_name = @question.hashtag
 
-    @data = twitter_client.search(@test_name).take(2)
+    @data = twitter_client.search(@test_name).take(9)
     @data.each do |data|
 
       if Tweet.exists?(t_id_str: data[:attrs][:id_str])
