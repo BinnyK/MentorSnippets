@@ -88,6 +88,7 @@ class MentorsController < ApplicationController
   # POST /mentors.json
   def create
     @mentor = Mentor.new(mentor_params)
+    authorize @mentor
 
     respond_to do |format|
       if @mentor.save
@@ -103,6 +104,7 @@ class MentorsController < ApplicationController
   # PATCH/PUT /mentors/1
   # PATCH/PUT /mentors/1.json
   def update
+    authorize @mentor
     respond_to do |format|
       if @mentor.update(mentor_params)
         format.html { redirect_to @mentor, notice: 'Mentor was successfully updated.' }
@@ -117,6 +119,7 @@ class MentorsController < ApplicationController
   # DELETE /mentors/1
   # DELETE /mentors/1.json
   def destroy
+    authorize @mentor
     @mentor.destroy
     respond_to do |format|
       format.html { redirect_to mentors_url, notice: 'Mentor was successfully destroyed.' }
