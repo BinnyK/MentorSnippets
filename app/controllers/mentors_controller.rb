@@ -2,7 +2,6 @@ class MentorsController < ApplicationController
   before_action :set_mentor, only: [:show, :edit, :update, :destroy, :save_mentor]
   attr_accessor :twitter_client
 
-
   def twitter_client
     @twitter_client ||= Twitter::REST::Client.new do |config|
       config.consumer_key        = "QmnF0N1nALWJCshk5ecUWXG2n"
@@ -57,6 +56,13 @@ class MentorsController < ApplicationController
     redirect_to mentors_path
     flash[:alert] = "List updated!"
   end
+
+  
+  def mentor_signup
+
+  end
+
+
 
   # GET /mentors
   # GET /mentors.json
