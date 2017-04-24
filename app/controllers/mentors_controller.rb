@@ -68,7 +68,10 @@ class MentorsController < ApplicationController
   # GET /mentors
   # GET /mentors.json
   def index
-    @mentors = Mentor.all
+    # @mentors = Mentor.all
+
+    @q = Mentor.ransack(params[:q])
+    @mentors = @q.result
   end
 
   # GET /mentors/1

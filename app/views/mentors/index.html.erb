@@ -17,6 +17,14 @@
   <!-- End: Header -->
 </div>
 
+<%= search_form_for @q do |f| %>
+  <%#= f.label :name_cont %>
+  <%= f.label :name_or_screen_name_or_description_cont %>
+  <%= f.search_field :name_or_screen_name_or_description_cont %>
+  <%#= f.search_field :name_cont %>
+  <%= f.submit %>
+<% end %>
+
 
 <div class="container">
   <p><%= link_to "Update Mentor list!", update_mentor_path %></p>
