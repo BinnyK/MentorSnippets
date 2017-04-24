@@ -1,5 +1,46 @@
 class TweetsController < ApplicationController
   before_action :set_tweet, only: [:show, :edit, :update, :destroy]
+  attr_accessor :twitter_client
+
+
+  def twitter_client
+    @twitter_client ||= Twitter::REST::Client.new do |config|
+      config.consumer_key        = "QmnF0N1nALWJCshk5ecUWXG2n"
+      config.consumer_secret     = "N7PoX41YI7YHinZw5qI9XmOskX0nzw60GPtMuQGb7UY6oNh853"
+    end
+  end
+
+  def retrieve_tweets
+    
+    @question = Question.find(params[:id])
+    @test_name = @question.hashtag
+    @data = twitter_client.search(@test_name).take(9)
+
+    @data.each do |data|
+      if (Tweet.exists?(t_id_str: data[:attrs][:id_str]) && @tweet.screen_name.downcase == @test_name.downcase)
+        flash[:alert] = "This Tweet already exists!"
+
+        @tweet.update(t_id_str:                      data[:attrs][:id_str])
+        @tweet.update(t_text:                        data[:attrs][:text])
+        @tweet.update(t_user_id_str:                 data[:attrs][:user][:id_str])
+        @tweet.update(t_screen_name:                 data[:attrs][:user][:screen_name])
+        @tweet.update(t_created_at:                  data[:attrs][:created_at])
+
+      else
+        Tweet.create(t_id_str:                       data[:attrs][:id_str], 
+                      t_text:                        data[:attrs][:text], 
+                      t_user_id_str:                 data[:attrs][:user][:id_str],
+                      t_screen_name:                 data[:attrs][:user][:screen_name],
+                      t_created_at:                  data[:attrs][:created_at],
+                      question_id:                   params[:id]
+                      )  
+      end
+    end
+    
+    redirect_to question_path(params[:id])
+
+  end
+
 
   # GET /tweets
   # GET /tweets.json
