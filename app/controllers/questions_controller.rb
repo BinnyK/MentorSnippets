@@ -14,9 +14,9 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.json
   def index
-    # @questions = Question.where(is_answered: true)
-    @questions = Question.all
-    # @test = twitter_client.search("#learntocode").take(1)
+    # @questions = Question.where(is_answered: true)   
+    @q = Question.ransack(params[:q])
+    @questions = @q.result
 
   end
 
