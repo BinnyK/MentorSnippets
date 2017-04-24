@@ -17,17 +17,17 @@
   <div class="row me-row schedule" id="schedule">
 
     <% @questions.each do |question| %>
-    <div class="col-md-8 col-md-offset-2">
+    <div class="col-md-6 col-md-offset-3">
       <div class="media">
-        <div class="media-left">
+<!--         <div class="media-left">
           <a href="#">
             <img class="media-object" src="http://placehold.it/150x150" alt="...">
           </a>
-        </div>
+        </div> -->
         <div class="media-body">
           <h4 class="media-heading"><%= link_to question.title, question %></h4>
           <p>#<%= question.hashtag %></p>
-          <p>Very brief description </p>
+
         </div>
       </div>
     </div>
