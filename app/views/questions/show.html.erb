@@ -1,8 +1,4 @@
-
-
-
 <div class="container-fluid">
-        
   <!-- Start: Header -->
   <div class="row hero-header" id="home">
     <div class="container">
@@ -11,13 +7,13 @@
     </div>
   </div>
   <!-- End: Header -->
-
 </div>
+
 
 <div class="container">
   <div class="row me-row content-ct speaker" id="speakers">
-  <%= link_to "Get tweets!", retrieve_tweets_path(id: @question.id) %>
-    <h2 class="row-title">Mentors</h2>
+    <%= link_to "Get tweets!", retrieve_tweets_path(id: @question.id) %>
+    <h2 class="row-title">Tech Advice</h2>
     <% @tweets.each do |tweet| %>
       <div class="col-sm-6 col-md-4 col-lg-3 feature">
         <div class="mentor-banner" style="<%= set_tweet_bg(tweet)%>">

@@ -11,13 +11,14 @@ class TweetsController < ApplicationController
   end
 
   def retrieve_tweets
-    
+    # Find the question to be referenced
     @question = Question.find(params[:id])
-    @test_name = @question.hashtag
 
-    @data = twitter_client.search(@test_name).take(9)
+    # Make API call using @question.hashtag
+    @data = twitter_client.search('#' + @question.hashtag).take(9)
+    
     @data.each do |data|
-
+      # If response tweet exists in db, update all fields besides id.
       if Tweet.exists?(t_id_str: data[:attrs][:id_str])
 
         @single_tweet = Tweet.where(t_id_str: data[:attrs][:id_str])
@@ -32,6 +33,7 @@ class TweetsController < ApplicationController
         @single_tweet.update(t_user_prof_ban_url:    data[:attrs][:user][:profile_banner_url])
         @single_tweet.update(t_favorite_count:       data[:attrs][:favorite_count])
 
+      # If not in db, create new Tweet
       else
         Tweet.create(t_id_str:                       data[:attrs][:id_str], 
                       t_text:                        data[:attrs][:text], 
@@ -46,9 +48,13 @@ class TweetsController < ApplicationController
                       )  
       end
     end
-    
+    # Redirect to this question path and notify user
     redirect_to question_path(params[:id])
+<<<<<<< HEAD
     flash[:alert] = "Updated Tweets"
+=======
+    flash[:alert] = "Tweets updated!"
+>>>>>>> Tidy and comment tweets controller
   end
 
 
