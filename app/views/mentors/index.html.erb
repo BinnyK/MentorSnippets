@@ -1,3 +1,13 @@
+<div class="container-fluid">
+  <!-- Start: Header -->
+  <div class="row hero-header question-show" id="home">
+    <div class="container">
+      <h1 class="text-center">Mentors</h1>
+    </div>
+  </div>
+  <!-- End: Header -->
+</div>
+
 
 <div class="container">
   <p><%= link_to "Update Mentor list!", update_mentor_path %></p>
@@ -6,7 +16,6 @@
   <p id="notice"><%= notice %></p>
 
   <div class="row me-row content-ct speaker" id="speakers">
-    <h2 class="row-title">Mentors</h2>
     <% @mentors.each do |mentor| %>
       <div class="col-sm-6 col-md-4 col-lg-3 feature">
         <div class="mentor-banner" style="<%= set_bg(mentor)%>">
