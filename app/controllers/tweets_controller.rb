@@ -15,7 +15,7 @@ class TweetsController < ApplicationController
     @question = Question.find(params[:id])
     @test_name = @question.hashtag
 
-    @data = twitter_client.search(@test_name).take(12)
+    @data = twitter_client.search(@test_name).take(2)
     @data.each do |data|
 
       if Tweet.exists?(t_id_str: data[:attrs][:id_str])
@@ -28,11 +28,18 @@ class TweetsController < ApplicationController
         @single_tweet.update(t_screen_name:          data[:attrs][:user][:screen_name])
         @single_tweet.update(t_created_at:           data[:attrs][:created_at])
 
+        @single_tweet.update(t_user_prof_img_url:    data[:attrs][:user][:profile_image_url])
+        @single_tweet.update(t_user_prof_bg_col:     data[:attrs][:user][:profile_background_color])
+        @single_tweet.update(t_favorite_count:       data[:attrs][:favorite_count])
+
       else
         Tweet.create(t_id_str:                       data[:attrs][:id_str], 
                       t_text:                        data[:attrs][:text], 
-                      t_user_id_str:                 data[:attrs][:user][:id_str],
                       t_screen_name:                 data[:attrs][:user][:screen_name],
+                      t_user_id_str:                 data[:attrs][:user][:id_str],
+                      t_user_prof_img_url:           data[:attrs][:user][:profile_image_url],
+                      t_user_prof_bg_col:            data[:attrs][:user][:profile_background_color],
+                      t_favorite_count:              data[:attrs][:favorite_count],
                       t_created_at:                  data[:attrs][:created_at],
                       question_id:                   @question.id
                       )  

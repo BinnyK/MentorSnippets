@@ -43,6 +43,7 @@
     <h2 class="row-title">Tech Advice</h2>
     <% @tweets.each do |tweet| %>
       <div class="col-md-4 col-sm-6 feature">
+        <img src="<%=tweet.t_user_prof_img_url %>" alt="profile_img" class="speaker-img" style="border: 4px solid #<%= tweet.t_user_prof_bg_col %>;">
         <h3><%= tweet.t_screen_name %></h3>
         <p><%= tweet.t_text %></p>
         <ul class="speaker-social">
