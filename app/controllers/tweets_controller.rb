@@ -19,7 +19,6 @@ class TweetsController < ApplicationController
     # Make API call using @question.hashtag
     @data = twitter_client.search('#' + @question.hashtag).take(30)
     
-    
     @data.each do |data|
       # If response tweet exists in db, update all fields besides id.
       if Tweet.exists?(t_id_str: data[:attrs][:id_str])
@@ -37,7 +36,8 @@ class TweetsController < ApplicationController
         @tweet.update(t_favorite_count:       data[:attrs][:favorite_count])
 
       # If not in db, create new Tweet
-      elsif @approved_ids.include? data[:attrs][:user][:id_str]
+      # elsif @approved_ids.include? data[:attrs][:user][:id_str]
+      else
         Tweet.create(t_id_str:                       data[:attrs][:id_str], 
                       t_text:                        data[:attrs][:text], 
                       t_screen_name:                 data[:attrs][:user][:screen_name],
@@ -49,7 +49,7 @@ class TweetsController < ApplicationController
                       t_created_at:                  data[:attrs][:created_at],
                       question_id:                   @question.id
                       )  
-      else
+      # else
       end
     end
     # Redirect to this question path and notify user
