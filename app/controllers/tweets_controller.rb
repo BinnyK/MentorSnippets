@@ -13,28 +13,31 @@ class TweetsController < ApplicationController
   def retrieve_tweets
     # Find the question to be referenced
     @question = Question.find(params[:id])
+    # Temporary approved ids 
+    @approved_ids = ['297380894', '1337785291', '344634424', '14123683', '259925559', '835566090839175169']
 
     # Make API call using @question.hashtag
-    @data = twitter_client.search('#' + @question.hashtag).take(9)
+    @data = twitter_client.search('#' + @question.hashtag).take(30)
+    
     
     @data.each do |data|
       # If response tweet exists in db, update all fields besides id.
       if Tweet.exists?(t_id_str: data[:attrs][:id_str])
 
-        @single_tweet = Tweet.where(t_id_str: data[:attrs][:id_str])
+        @tweet = Tweet.where(t_id_str: data[:attrs][:id_str])
 
-        @single_tweet.update(t_text:                 data[:attrs][:text])
-        @single_tweet.update(t_user_id_str:          data[:attrs][:user][:id_str])
-        @single_tweet.update(t_screen_name:          data[:attrs][:user][:screen_name])
-        @single_tweet.update(t_created_at:           data[:attrs][:created_at])
+        @tweet.update(t_text:                 data[:attrs][:text])
+        @tweet.update(t_user_id_str:          data[:attrs][:user][:id_str])
+        @tweet.update(t_screen_name:          data[:attrs][:user][:screen_name])
+        @tweet.update(t_created_at:           data[:attrs][:created_at])
 
-        @single_tweet.update(t_user_prof_img_url:    data[:attrs][:user][:profile_image_url])
-        @single_tweet.update(t_user_prof_bg_col:     data[:attrs][:user][:profile_background_color])
-        @single_tweet.update(t_user_prof_ban_url:    data[:attrs][:user][:profile_banner_url])
-        @single_tweet.update(t_favorite_count:       data[:attrs][:favorite_count])
+        @tweet.update(t_user_prof_img_url:    data[:attrs][:user][:profile_image_url])
+        @tweet.update(t_user_prof_bg_col:     data[:attrs][:user][:profile_background_color])
+        @tweet.update(t_user_prof_ban_url:    data[:attrs][:user][:profile_banner_url])
+        @tweet.update(t_favorite_count:       data[:attrs][:favorite_count])
 
       # If not in db, create new Tweet
-      else
+      elsif @approved_ids.include? data[:attrs][:user][:id_str]
         Tweet.create(t_id_str:                       data[:attrs][:id_str], 
                       t_text:                        data[:attrs][:text], 
                       t_screen_name:                 data[:attrs][:user][:screen_name],
@@ -46,15 +49,12 @@ class TweetsController < ApplicationController
                       t_created_at:                  data[:attrs][:created_at],
                       question_id:                   @question.id
                       )  
+      else
       end
     end
     # Redirect to this question path and notify user
     redirect_to question_path(params[:id])
-<<<<<<< HEAD
-    flash[:alert] = "Updated Tweets"
-=======
     flash[:alert] = "Tweets updated!"
->>>>>>> Tidy and comment tweets controller
   end
 
 
