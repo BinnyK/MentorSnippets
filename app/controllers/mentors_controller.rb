@@ -10,61 +10,53 @@ class MentorsController < ApplicationController
     end
   end
 
-  def save_mentor
-    @test_name = 'RogerFederer'
-    @data = twitter_client.user(@test_name.downcase)
+  def update_mentor
+    # Set list of mentors to fetch from Twitter. This will be a list from a model
+    @approved_list = ['RogerFederer', 'RafaelNadal', 'andy_murray', 'tsonga7', 'DjokerNole ']
+    
+    @approved_list.each do |player|
+      
+      # Fetch user from Twitter
+      @data = twitter_client.user(player)
+      
+      # If Mentor exists in db? Just update the fields to get latest user info
+      if Mentor.exists?(twitter_id_str: @data[:attrs][:id_str])
+        
+        # Find the Mentor that needs to be updated
+        @mentor = Mentor.where(twitter_id_str: @data[:attrs][:id_str])
 
-    if (Mentor.exists?(twitter_id_str: @data[:attrs][:id_str]) && @mentor.screen_name.downcase == @test_name.downcase)
-      flash[:alert] = "This Mentor already exists!"
+        @mentor.update(name:                         @data[:attrs][:name])
+        @mentor.update(screen_name:                  @data[:attrs][:screen_name])
+        @mentor.update(description:                  @data[:attrs][:description])
+        @mentor.update(url:                          @data[:attrs][:url])
+        @mentor.update(followers_count:              @data[:attrs][:followers_count])
+        @mentor.update(friends_count:                @data[:attrs][:friends_count])
+        @mentor.update(profile_background_color:     @data[:attrs][:profile_background_color])
+        @mentor.update(profile_background_image_url: @data[:attrs][:profile_background_image_url])
+        @mentor.update(profile_banner_url:           @data[:attrs][:profile_banner_url])
+        @mentor.update(profile_image_url:            @data[:attrs][:profile_image_url])
 
-      @mentor.update(twitter_id_str:               @data[:attrs][:id_str])
-      @mentor.update(name:                         @data[:attrs][:name])
-      @mentor.update(screen_name:                  @data[:attrs][:screen_name])
-      @mentor.update(description:                  @data[:attrs][:description])
-      @mentor.update(url:                          @data[:attrs][:url])
-      @mentor.update(followers_count:              @data[:attrs][:followers_count])
-      @mentor.update(friends_count:                @data[:attrs][:friends_count])
-      @mentor.update(profile_background_color:     @data[:attrs][:profile_background_color])
-      @mentor.update(profile_background_image_url: @data[:attrs][:profile_background_image_url])
-      @mentor.update(profile_banner_url:           @data[:attrs][:profile_banner_url])
-      @mentor.update(profile_image_url:            @data[:attrs][:profile_image_url])
-
-    else
-      Mentor.create(twitter_id_str:               @data[:attrs][:id_str], 
-                    name:                         @data[:attrs][:name], 
-                    screen_name:                  @data[:attrs][:screen_name],
-                    description:                  @data[:attrs][:description],
-                    url:                          @data[:attrs][:url],
-                    followers_count:              @data[:attrs][:followers_count],
-                    friends_count:                @data[:attrs][:friends_count],
-                    profile_background_color:     @data[:attrs][:profile_background_color],
-                    profile_background_image_url: @data[:attrs][:profile_background_image_url],
-                    profile_banner_url:           @data[:attrs][:profile_banner_url],
-                    profile_image_url:            @data[:attrs][:profile_image_url],
-                    )  
-
+      # This Twitter user doesn't exist in db so create one
+      else
+        Mentor.create(twitter_id_str:               @data[:attrs][:id_str], 
+                      name:                         @data[:attrs][:name], 
+                      screen_name:                  @data[:attrs][:screen_name],
+                      description:                  @data[:attrs][:description],
+                      url:                          @data[:attrs][:url],
+                      followers_count:              @data[:attrs][:followers_count],
+                      friends_count:                @data[:attrs][:friends_count],
+                      profile_background_color:     @data[:attrs][:profile_background_color],
+                      profile_background_image_url: @data[:attrs][:profile_background_image_url],
+                      profile_banner_url:           @data[:attrs][:profile_banner_url],
+                      profile_image_url:            @data[:attrs][:profile_image_url],
+                      )  
+      end
     end
-    
+
+    # Redirect to mentors page and notify user of update
     redirect_to mentors_path
-    
-
+    flash[:alert] = "List updated!"
   end
-
-
-  #   t.string   "twitter_id_str"
-  #   t.string   "name"
-  #   t.string   "screen_name"
-  #   t.text     "description"
-  #   t.string   "url"
-  #   t.integer  "followers_count",              default: 0
-  #   t.integer  "friends_count",                default: 0
-  #   t.string   "profile_background_color"
-  #   t.string   "profile_background_image_url"
-  #   t.string   "profile_banner_url"
-  #   t.string   "profile_image_url"
-  #   t.datetime "created_at",                               null: false
-  #   t.datetime "updated_at",                               null: false
-
 
   # GET /mentors
   # GET /mentors.json

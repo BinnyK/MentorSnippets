@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :mentors
   root 'questions#index'
 
-  get 'save_mentor', to: 'mentors#save_mentor'
+  get 'update_mentor', to: 'mentors#update_mentor'
   get 'retrieve_tweets', to: 'tweets#retrieve_tweets'
   
   resources :questions
