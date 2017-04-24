@@ -1,5 +1,6 @@
 class TweetsController < ApplicationController
   before_action :set_tweet, only: [:show, :edit, :update, :destroy]
+  before_action :redirect_user, only: [:edit, :new, :retrieve_tweets]
   attr_accessor :twitter_client
 
 
@@ -131,5 +132,12 @@ class TweetsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def tweet_params
       params.require(:tweet).permit(:t_id_str, :t_text, :t_created_at, :t_user_id_str, :t_screen_name, :question_id)
+    end
+
+    def redirect_user
+      if user_signed_in? && (current_user.has_role? :admin)
+      else
+        raise Pundit::NotAuthorizedError, "must be logged in"
+      end
     end
 end

@@ -1,5 +1,6 @@
 class MentorsController < ApplicationController
   before_action :set_mentor, only: [:show, :edit, :update, :destroy, :save_mentor]
+  before_action :redirect_user, only: [:edit, :new, :update_mentor]
   attr_accessor :twitter_client
 
   def twitter_client
@@ -136,5 +137,12 @@ class MentorsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def mentor_params
       params.require(:mentor).permit(:twitter_id_str, :name, :screen_name, :description, :url, :followers_count, :friends_count, :profile_background_color, :profile_background_image_url, :profile_banner_url, :profile_image_url)
+    end
+
+    def redirect_user
+      if user_signed_in? && (current_user.has_role? :admin)
+      else
+        raise Pundit::NotAuthorizedError, "must be logged in"
+      end
     end
 end

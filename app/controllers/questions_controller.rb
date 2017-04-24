@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
+  before_action :redirect_user, only: [:edit, :new]
   attr_accessor :twitter_client
 
 
@@ -87,5 +88,12 @@ class QuestionsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
       params.require(:question).permit(:title, :hashtag, :is_answered)
+    end
+
+    def redirect_user
+      if user_signed_in? && (current_user.has_role? :admin)
+      else
+        raise Pundit::NotAuthorizedError, "must be logged in"
+      end
     end
 end
