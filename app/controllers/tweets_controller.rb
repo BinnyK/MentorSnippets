@@ -13,6 +13,7 @@ class TweetsController < ApplicationController
   def retrieve_tweets
     # Find the question to be referenced
     @question = Question.find(params[:id])
+    
     # Temporary approved ids 
     @approved_ids = ['297380894', '1337785291', '344634424', '14123683', '259925559', '835566090839175169']
 
@@ -36,7 +37,7 @@ class TweetsController < ApplicationController
         @tweet.update(t_favorite_count:       data[:attrs][:favorite_count])
 
       # If not in db, create new Tweet
-      # elsif @approved_ids.include? data[:attrs][:user][:id_str]
+      # elsif @approved_ids.include? data[:attrs][:user][:id_str] 
       else
         Tweet.create(t_id_str:                       data[:attrs][:id_str], 
                       t_text:                        data[:attrs][:text], 

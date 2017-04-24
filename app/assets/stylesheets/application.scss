@@ -14,8 +14,8 @@
  *= require_self
  */
 
-	@import "bootstrap-sprockets";
-	@import "bootstrap";
+@import "bootstrap-sprockets";
+@import "bootstrap";
 
 $bg-blue: #007ee5;
 $bg-grey: #babec8;
@@ -25,6 +25,8 @@ $light-orange: #F69B81;
 $light-purple: #A090FF;
 $light-brown: #9C8272;
 $light-grey: #848BA0;
+
+$original-blue: #016CC7;
 
 .navbar {
     margin-bottom: 0;
@@ -50,6 +52,20 @@ $light-grey: #848BA0;
 .admin-links li {
     display: inline-block;
 }
+
+.earthman-banner {
+    display: block;
+    
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+
+
+
+
 
 
 
@@ -163,10 +179,22 @@ a:hover, a:focus, a:active, a:visited {
 
 
 .hero-header {
-	background: #016cc7;
-	min-height: 400px;
-	padding: 7em;
+	
+    // background: -moz-linear-gradient($bg-blue, #17406F);
+    // background: -webkit-linear-gradient($bg-blue, #17406F);
+    // background: linear-gradient(#256796, #17406F);
+    // background: linear-gradient(#7D138B, #190729);
+	min-height: 250px;
+	padding: 5em;
 	color: #fff;
+
+    &.questions-list {
+        background: #190729;
+    }
+    &.question-show {
+        background-color: $bg-blue;
+    }
+
 }
 .hero-header h1 {
 	margin: 1em 0 0 0;
