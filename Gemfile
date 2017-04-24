@@ -39,7 +39,7 @@ gem 'devise'
 gem 'twitter', '~> 6.1'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'rolify', '~> 5.1'
-
+gem 'pundit', '~> 1.1'
 
 
 group :development, :test do
