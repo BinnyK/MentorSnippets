@@ -43,6 +43,7 @@ gem 'pundit', '~> 1.1'
 gem 'ransack', '~> 1.8', '>= 1.8.2'
 gem 'simple_form'
 gem 'activeadmin', github: 'activeadmin'
+gem 'omniauth-twitter'
 
 
 group :development, :test do
