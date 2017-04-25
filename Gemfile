@@ -42,6 +42,7 @@ gem 'rolify', '~> 5.1'
 gem 'pundit', '~> 1.1'
 gem 'ransack', '~> 1.8', '>= 1.8.2'
 gem 'simple_form'
+gem 'activeadmin', github: 'activeadmin'
 
 
 group :development, :test do
