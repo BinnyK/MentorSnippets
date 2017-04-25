@@ -9,6 +9,12 @@
   <!-- End: Header -->
 </div>
 
+<%= search_form_for(@q, url: question_path) do |f| %>
+  <%= f.label :t_screen_name_or_t_text_cont %>
+  <%= f.search_field :t_screen_name_or_t_text_cont %>
+  <%= f.submit %>
+<% end %>
+
 
 <div class="container">
   <div class="row me-row content-ct speaker" id="speakers">

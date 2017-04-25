@@ -24,7 +24,10 @@ class QuestionsController < ApplicationController
   # GET /questions/1.json
   def show
     # @tweets = twitter_client.search("#" + "#{@question.hashtag}").take(9)
-    @tweets = Tweet.where(question_id: params[:id])
+    @question_tweets = Tweet.where(question_id: params[:id])
+    @q = @question_tweets.ransack(params[:q])
+    @tweets = @q.result
+
   end
 
   # GET /questions/new
