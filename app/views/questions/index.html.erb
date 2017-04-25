@@ -1,14 +1,13 @@
-<div class="container-fluid">
-        
+<div class="container-fluid">        
   <!-- Start: Header -->
   <div class="row hero-header questions-list" id="home">
     <div class="container">
       <h1 class="text-center question-header">Questions</h1>
     </div>
-    <img src="<%= asset_path "earthdude.png" %>" alt="illustration" class="earthman-banner">
+    <img src="<%= asset_path "earthdude.png" %>" alt="illustration" class="earthman-small">
+    <%= link_to "Add Question", new_question_path, class: "btn btn-red btn-question" %>
   </div>
   <!-- End: Header -->
-
 </div>
 
 <div class="container">
@@ -25,10 +24,6 @@
     </div>    
   </div>
 </div>
-
-
-
-
 
 <!-- Start: Schedule -->
 <div class="container">
@@ -50,6 +45,5 @@
       </div>
     </div>
     <% end %>
-
   </div>
 </div>

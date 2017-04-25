@@ -62,6 +62,15 @@ $original-blue: #016CC7;
     margin-top: 40px;
 }
 
+.earthman-small {
+    display: block;
+    
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
 .search {
     margin-top: 40px;
 }
@@ -99,6 +108,13 @@ a:hover, a:focus, a:active, a:visited {
 // 	text-transform: uppercase;
 //     font-weight: 600;
 // }
+
+.container-fluid .questions-list .btn-question {
+    width: 100px;
+    margin: 0 auto;
+    display: block;
+    margin-top: 50px;
+}
 .btn-lg {
 	padding: 15px 40px;
     font-size: 16px;
@@ -189,13 +205,16 @@ a:hover, a:focus, a:active, a:visited {
 	min-height: 250px;
 	padding: 5em;
 	color: #fff;
+    background: #190729;
 
     &.questions-list {
-        background: #190729;
+        
+        padding: 3em;
     }
     &.question-show {
         background-color: $bg-blue;
     }
+
 }
 
 .narrow {
