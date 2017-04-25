@@ -19,6 +19,7 @@ class TweetsController < ApplicationController
     # @approved_ids = ['297380894', '1337785291', '344634424', '14123683', '259925559', '835566090839175169']
     @mentors = Mentor.all
     @approved_list = @mentors.map {|mentor| mentor.twitter_id_str}
+    puts @approved_list
 
     # Make API call using @question.hashtag
     @data = twitter_client.search('#' + @question.hashtag).take(30)
@@ -40,7 +41,7 @@ class TweetsController < ApplicationController
         @tweet.update(t_favorite_count:       data[:attrs][:favorite_count])
 
       # If not in db, create new Tweet
-      # elsif @approved_list.include? data[:attrs][:user][:id_str]
+      # elsif @approved_list.include?(data[:attrs][:user][:id_str])
       else
         Tweet.create(t_id_str:                       data[:attrs][:id_str], 
                       t_text:                        data[:attrs][:text], 
