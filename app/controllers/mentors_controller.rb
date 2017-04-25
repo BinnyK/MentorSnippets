@@ -12,7 +12,10 @@ class MentorsController < ApplicationController
 
   def update_mentor
     # Set list of mentors to fetch from Twitter. This will be a list from a model
-    @approved_list = ['RogerFederer', 'RafaelNadal', 'andy_murray', 'tsonga7', 'DjokerNole ']
+    # @approved_list = ['RogerFederer', 'RafaelNadal', 'andy_murray', 'tsonga7', 'DjokerNole ']
+    # @approved_list = Mentor.all.each do |mentor|
+      
+
     
     @approved_list.each do |player|
       

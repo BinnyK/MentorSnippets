@@ -46,8 +46,8 @@
   <div class="row">
     <div class="col-sm-12 col-md-4">
       <% if user_signed_in? && (current_user.has_role? :admin) %>
-        <%= link_to "Update Mentor list!", update_mentor_path %>
-        <%= link_to 'New Mentor', new_mentor_path %>
+        <%= link_to 'New Mentor', new_mentor_path, class: "btn btn-primary" %>
+        <%= link_to "Update Mentor list!", update_mentor_path, class: "btn btn-warning" %>
       <% end %>
     </div>
     <div class="col-sm-12 col-md-4">
@@ -68,7 +68,7 @@
         <div class="mentor-banner" style="<%= set_bg(mentor)%>">
           
         </div>
-        <img src="<%= mentor.profile_image_url %>" class="speaker-img" style="border: 4px solid <%= mentor.profile_background_color %>;">
+        <img src="<%= mentor.profile_image_url %>" class="speaker-img" style="border: 4px solid #<%= mentor.profile_background_color %>;">
         <h3><%= mentor.screen_name %></h3>
         <p><%= mentor.description %></p>
       </div>
