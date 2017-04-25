@@ -14,7 +14,9 @@
 <div class="container search">
   <div class="row">
     <div class="col-sm-12 col-md-4">
-      <%= link_to "Get tweets!", retrieve_tweets_path(id: @question.id) %>
+      <% if user_signed_in? && (current_user.has_role? :admin) %>
+        <%= link_to "Get tweets!", retrieve_tweets_path(id: @question.id) %>
+      <% end %>
     </div>
     <div class="col-sm-12 col-md-4">
       <%= search_form_for(@q, url: question_path, :html => {class: 'input-group' }) do |f| %>

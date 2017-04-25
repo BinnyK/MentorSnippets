@@ -5,7 +5,9 @@
       <h1 class="text-center question-header">Questions</h1>
     </div>
     <img src="<%= asset_path "earthdude.png" %>" alt="illustration" class="earthman-small">
-    <%= link_to "Add Question", new_question_path, class: "btn btn-red btn-question" %>
+    <% if user_signed_in? && (current_user.has_role? :admin) %>
+      <%= link_to "Add Question", new_question_path, class: "btn btn-red btn-question" %>
+    <% end %>
   </div>
   <!-- End: Header -->
 </div>
