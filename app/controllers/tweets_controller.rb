@@ -40,7 +40,7 @@ class TweetsController < ApplicationController
         @tweet.update(t_favorite_count:       data[:attrs][:favorite_count])
 
       # If not in db, create new Tweet
-      elsif @approved_list.include? data[:attrs][:user][:id_str] 
+      elsif @approved_list.include? data[:attrs][:user][:id_str]
         Tweet.create(t_id_str:                       data[:attrs][:id_str], 
                       t_text:                        data[:attrs][:text], 
                       t_screen_name:                 data[:attrs][:user][:screen_name],
