@@ -62,7 +62,9 @@ $original-blue: #016CC7;
     margin-top: 40px;
 }
 
-
+.search {
+    margin-top: 40px;
+}
 
 
 
@@ -93,10 +95,10 @@ a:hover, a:focus, a:active, a:visited {
 }
 
 /* Buttons override */
-.btn {
-	text-transform: uppercase;
-    font-weight: 600;
-}
+// .btn {
+// 	text-transform: uppercase;
+//     font-weight: 600;
+// }
 .btn-lg {
 	padding: 15px 40px;
     font-size: 16px;
@@ -227,7 +229,7 @@ a:hover, a:focus, a:active, a:visited {
 }
 .feature {
 	padding: 20px;
-	margin-top: 30px;
+	margin-bottom: 30px;
 	min-height: 380px;
 }
 .feature span {

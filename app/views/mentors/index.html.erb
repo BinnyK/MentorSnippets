@@ -17,19 +17,25 @@
   <!-- End: Header -->
 </div>
 
-<%= search_form_for @q do |f| %>
-  <%#= f.label :name_cont %>
-  <%= f.label :name_or_screen_name_or_description_cont %>
-  <%= f.search_field :name_or_screen_name_or_description_cont %>
-  <%#= f.search_field :name_cont %>
-  <%= f.submit %>
-<% end %>
 
+<div class="container search">
+  <div class="row">
+    <div class="col-sm-12 col-md-4">
+      <%= link_to "Update Mentor list!", update_mentor_path %>
+      <%= link_to 'New Mentor', new_mentor_path %>
+    </div>
+    <div class="col-sm-12 col-md-4">
+      <%= search_form_for @q, :html => {class: 'input-group' } do |f| %>
+        <%= f.search_field :name_or_screen_name_or_description_cont, class: "form-control", placeholder: "Search questions" %>
+        <span class="input-group-btn">
+          <%= f.submit "Go", class:"btn btn-default" %>
+        </span>
+      <% end %>
+    </div>
+  </div>
+</div>
 
 <div class="container">
-  <p><%= link_to "Update Mentor list!", update_mentor_path %></p>
-  <p><%= link_to 'New Mentor', new_mentor_path %></p>
-  
   <p id="notice"><%= notice %></p>
 
   <div class="row me-row content-ct speaker" id="speakers">

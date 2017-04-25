@@ -9,17 +9,28 @@
   <!-- End: Header -->
 </div>
 
-<%= search_form_for(@q, url: question_path) do |f| %>
-  <%= f.label :t_screen_name_or_t_text_cont %>
-  <%= f.search_field :t_screen_name_or_t_text_cont %>
-  <%= f.submit %>
-<% end %>
+
+
+<div class="container search">
+  <div class="row">
+    <div class="col-sm-12 col-md-4">
+      <%= link_to "Get tweets!", retrieve_tweets_path(id: @question.id) %>
+    </div>
+    <div class="col-sm-12 col-md-4">
+      <%= search_form_for(@q, url: question_path, :html => {class: 'input-group' }) do |f| %>
+        <%= f.search_field :t_screen_name_or_t_text_cont, class: "form-control", placeholder: "Search answers" %>
+        <span class="input-group-btn">
+          <%= f.submit "Go", class:"btn btn-default" %>
+        </span>
+      <% end %>
+    </div>
+  </div>
+</div>
 
 
 <div class="container">
   <div class="row me-row content-ct speaker" id="speakers">
-    <%= link_to "Get tweets!", retrieve_tweets_path(id: @question.id) %>
-    <h2 class="row-title">Tech Advice</h2>
+    
     <% @tweets.each do |tweet| %>
       <div class="col-sm-6 col-md-4 col-lg-3 feature">
         <div class="mentor-banner" style="<%= set_tweet_bg(tweet)%>">
