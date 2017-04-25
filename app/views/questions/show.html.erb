@@ -34,12 +34,15 @@
   <div class="row me-row content-ct speaker" id="speakers">
     
     <% @tweets.each do |tweet| %>
-      <div class="col-sm-6 col-md-4 col-lg-3 feature">
+      <div class="col-sm-6 col-md-4 col-lg-3 feature tweet">
         <div class="mentor-banner" style="<%= set_tweet_bg(tweet)%>">
         </div>
         <img src="<%= tweet.t_user_prof_img_url %>" class="speaker-img" style="border: 4px solid #<%= tweet.t_user_prof_bg_col %>;">
         <h3><%= tweet.t_screen_name %></h3>
         <p><%= tweet.t_text %></p>
+        <% if user_signed_in? && (current_user.has_role? :admin) %>
+          <%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
         <!-- <ul class="speaker-social">
           <li><a href="#"><span class="ti-facebook"></span></a></li>
           <li><a href="#"><span class="ti-twitter-alt"></span></a></li>

@@ -1,5 +1,35 @@
-<h1>New Mentor</h1>
+<div class="container login">
+  <div class="row">
+    <div class="col-sm-12 col-md-6 col-md-offset-3">
+      <img src="<%= asset_path "earthdude.png" %>" alt="illustration" class="earthman-login">
+			<h1>New Mentor</h1>
 
-<%= render 'form', mentor: @mentor %>
+			<%= simple_form_for(@mentor) do |f| %>
+			  <% if @mentor.errors.any? %>
+			    <div id="error_explanation">
+			      <h2><%= pluralize(mentor.errors.count, "error") %> prohibited this mentor from being saved:</h2>
 
-<%= link_to 'Back', mentors_path %>
+			      <ul>
+			      <% @mentor.errors.full_messages.each do |message| %>
+			        <li><%= message %></li>
+			      <% end %>
+			      </ul>
+			    </div>
+			  <% end %>
+
+			  <div class="form-group">
+			    <%= f.label :screen_name %>
+			    <%= f.text_field :screen_name, class: "form-control" %>
+			  </div>
+
+			  <div class="actions">
+			    <%= f.submit "Create Mentor", class:"btn btn-primary" %>
+			  </div>
+
+			<% end %>
+
+
+			<%= link_to 'Back', mentors_path %>
+		</div>
+	</div>
+</div>

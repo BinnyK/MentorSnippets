@@ -71,6 +71,9 @@
         <img src="<%= mentor.profile_image_url %>" class="speaker-img" style="border: 4px solid #<%= mentor.profile_background_color %>;">
         <h3><%= mentor.screen_name %></h3>
         <p><%= mentor.description %></p>
+        <% if user_signed_in? && (current_user.has_role? :admin) %>
+          <%= link_to 'Destroy', mentor, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
       </div>
     <% end %>
   </div>

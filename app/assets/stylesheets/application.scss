@@ -268,7 +268,10 @@ a:hover, a:focus, a:active, a:visited {
 .feature {
 	padding: 20px;
 	margin-bottom: 30px;
-	min-height: 370px;
+	min-height: 380px;
+    &.tweet {
+        min-height: 410px;
+    }
 }
 .feature span {
 	font-size: 5em;

@@ -13,23 +13,22 @@ class MentorsController < ApplicationController
   def update_mentor
     # Set list of mentors to fetch from Twitter. This will be a list from a model
     # @approved_list = ['RogerFederer', 'RafaelNadal', 'andy_murray', 'tsonga7', 'DjokerNole ']
-    # @approved_list = Mentor.all.each do |mentor|
-      
-
+    @mentors = Mentor.all
+    @approved_list = @mentors.map {|mentor| mentor.screen_name}
     
-    @approved_list.each do |player|
+    @approved_list.each do |mentor|
       
       # Fetch user from Twitter
-      @data = twitter_client.user(player)
+      @data = twitter_client.user(mentor)
       
       # If Mentor exists in db? Just update the fields to get latest user info
-      if Mentor.exists?(twitter_id_str: @data[:attrs][:id_str])
+      if Mentor.exists?(screen_name: @data[:attrs][:screen_name])
         
         # Find the Mentor that needs to be updated
-        @mentor = Mentor.where(twitter_id_str: @data[:attrs][:id_str])
+        @mentor = Mentor.where(screen_name: @data[:attrs][:screen_name])
 
+        @mentor.update(twitter_id_str:               @data[:attrs][:id_str])
         @mentor.update(name:                         @data[:attrs][:name])
-        @mentor.update(screen_name:                  @data[:attrs][:screen_name])
         @mentor.update(description:                  @data[:attrs][:description])
         @mentor.update(url:                          @data[:attrs][:url])
         @mentor.update(followers_count:              @data[:attrs][:followers_count])
@@ -99,7 +98,7 @@ class MentorsController < ApplicationController
 
     respond_to do |format|
       if @mentor.save
-        format.html { redirect_to @mentor, notice: 'Mentor was successfully created.' }
+        format.html { redirect_to mentors_path, notice: 'Mentor was successfully created.' }
         format.json { render :show, status: :created, location: @mentor }
       else
         format.html { render :new }
@@ -114,7 +113,7 @@ class MentorsController < ApplicationController
     authorize @mentor
     respond_to do |format|
       if @mentor.update(mentor_params)
-        format.html { redirect_to @mentor, notice: 'Mentor was successfully updated.' }
+        format.html { redirect_to mentors_path, notice: 'Mentor was successfully updated.' }
         format.json { render :show, status: :ok, location: @mentor }
       else
         format.html { render :edit }

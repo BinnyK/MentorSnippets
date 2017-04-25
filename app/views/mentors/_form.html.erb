@@ -1,6 +1,6 @@
 
 
-<%= form_for(mentor) do |f| %>
+<%= simple_form_for(mentor) do |f| %>
   <% if mentor.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(mentor.errors.count, "error") %> prohibited this mentor from being saved:</h2>
@@ -13,62 +13,62 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :twitter_id_str %>
-    <%= f.text_field :twitter_id_str %>
+    <%= f.text_field :twitter_id_str, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :screen_name %>
-    <%= f.text_field :screen_name %>
+    <%= f.text_field :screen_name, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :description %>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :url %>
-    <%= f.text_field :url %>
+    <%= f.text_field :url, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :followers_count %>
-    <%= f.number_field :followers_count %>
+    <%= f.number_field :followers_count, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :friends_count %>
-    <%= f.number_field :friends_count %>
+    <%= f.number_field :friends_count, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :profile_background_color %>
-    <%= f.text_field :profile_background_color %>
+    <%= f.text_field :profile_background_color, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :profile_background_image_url %>
-    <%= f.text_field :profile_background_image_url %>
+    <%= f.text_field :profile_background_image_url, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :profile_banner_url %>
-    <%= f.text_field :profile_banner_url %>
+    <%= f.text_field :profile_banner_url, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :profile_image_url %>
-    <%= f.text_field :profile_image_url %>
+    <%= f.text_field :profile_image_url, class: "form-control" %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Create Mentor", class:"btn btn-primary" %>
   </div>
 <% end %>
