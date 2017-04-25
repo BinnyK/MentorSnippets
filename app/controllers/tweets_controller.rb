@@ -40,7 +40,8 @@ class TweetsController < ApplicationController
         @tweet.update(t_favorite_count:       data[:attrs][:favorite_count])
 
       # If not in db, create new Tweet
-      elsif @approved_list.include? data[:attrs][:user][:id_str]
+      # elsif @approved_list.include? data[:attrs][:user][:id_str]
+      else
         Tweet.create(t_id_str:                       data[:attrs][:id_str], 
                       t_text:                        data[:attrs][:text], 
                       t_screen_name:                 data[:attrs][:user][:screen_name],
@@ -51,7 +52,9 @@ class TweetsController < ApplicationController
                       t_favorite_count:              data[:attrs][:favorite_count],
                       t_created_at:                  data[:attrs][:created_at],
                       question_id:                   @question.id
-                      )  
+        )
+      # else
+      #   puts 'No expected response from Twitter API'  
       end
     end
     # Redirect to this question path and notify user
