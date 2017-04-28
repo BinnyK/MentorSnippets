@@ -63,7 +63,7 @@ Dev Mentor aims to solve that problem by using services that mentors already use
 
 ## Entity Relationship Diagram
 
-<img src="process/ERDtest.png" alt="ERD" style="width: 350px;"/>
+<img src="process/ERD.png" alt="ERD" style="width: 350px;"/>
 
 
 
