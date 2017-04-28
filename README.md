@@ -52,11 +52,16 @@ Dev Mentor aims to solve that problem by using services that mentors already use
 
 ## Wireframes
 
-**Mentor list page**
+#### Mentor list page
+
 <img src="process/wireframe-mentor.png" alt="wireframe" style="width: 350px;"/>
-**Question list page**
+
+#### Question list page
+
 <img src="process/wireframe-question.png" alt="wireframe" style="width: 350px;"/>
-**Tweet answers page**
+
+#### Tweet answers page
+
 <img src="process/wireframe-tweet.png" alt="wireframe" style="width: 350px;"/>
 
 ## User stories
