@@ -1,77 +1,218 @@
 # DevMentor
 
-![Code Climate](https://codeclimate.com/github/BinnyK/MentorSnippets)
-
+A collection of advice from tech industry leaders.
 
 Heroku link: [http://devmentor.herokuapp.com/](http://devmentor.herokuapp.com/)
 Github link: [https://github.com/BinnyK/MentorSnippets](https://github.com/BinnyK/MentorSnippets)
 
-## Rationale
+Overview
+========
 
-This is the second major project for Coder Factory Academy. The aim of the project was to create an app that connects two groups, mentors and beginning developers. The project serves to solve these problems:
+* [Project brief](#project-brief)
+* [Technology stack](#technology-stack)
+* [Problem](#problem)
+* [Solution](#solution)
+* [User stories](#user-stories)
+* [Concept, Design & Build](#concept-design-build)
+* [Database schema design](#database-schema-design)
+* [Gems and Tools used](#gems-and-tools-used)
+* [Style guide](#style-guide)
+  * [Color](#color)
+  * [Font type](#font-type)
+* [Project management in Trello](#project-management-in-trello)
+* [Outstanding issues](#outstanding-issues)
 
-- Beginning devs have a lot of questions they would love to ask mentors.
-- Beginning devs want to connect with mentors.
-- Mentors want to connect with beginning devs
-- Mentors don't have the time and resources to meet individually with many beginning devs.
-- Mentors are busy people
 
-## What is Dev Mentor?
+Project brief
+=============
 
-**Dev Mentor** provides Mentor answers to the most popular questions asked by beginning developers. Questions such as:
+* Design, build and deploy an application that brings two groups of people together
+* Find a problem that can be solved with a solution
 
-  1. What is the most important soft skill that a beginning dev should have?
-  2. What would do differently if you were beginning your tech career?
-  3. How do I know when I'm ready to get a job as a dev?
-  4. What are your top 3 dev workflow tools?
+[Return to overview](#overview)
 
-**Dev Mentor** is like code snippets but for advice
+Technology stack
+========
 
-## Aim
+Ruby on Rails
+Bootstrap
 
-To connect tech industry leaders (who have a wealth of knowledge and experience) to beginning developers (who would benefit from advice)
+Planning done through [Trello](https://trello.com/b/NuJasHA4/dev-mentor)
 
-## Problems
+[Return to overview](#overview)
 
-Tech leaders (mentors) are busy people and don't necessarily have the time to connect individually with many beginning devs. They also (usually) don't have time to learn and use another new app with accounts and passwords to keep track of.
+Problem
+=======
 
-## Solution
+* Beginning devs have a lot of questions they would love to ask mentors.
+* Beginning devs want to connect with mentors.
 
-In order to meet the problems, Dev Mentor uses Twitter. This helps because:
+* Mentors want to connect with beginning devs
+* Mentors don't have the time and resources to meet individually with many beginning devs.
+* Mentors are busy people
+
+[Return to overview](#overview)
+
+Solution
+========
+
+* Use Twitter to connect popular dev questions to tech leaders
+* Collate and display all responses on DevMentor.
+
+Rationale
 
   1. Tech leaders are already on Twitter.
   2. Tech adivse can be kept short and concise (140 character limit), rather than having to write an essay to answer a simple question.
   3. Mentor advise is applicable to a large audience of junior devs.
   4. Mentors benefit from more followers.
 
-## Roadblocks
+**Dev Mentor** provides Mentor answers to the most popular questions asked by beginning developers. Questions such as:
+
+1. What is the most important soft skill that a beginning dev should have?
+2. What would do differently if you were beginning your tech career?
+3. How do I know when I'm ready to get a job as a dev?
+4. What are your top 3 dev workflow tools?
+
+[Return to overview](#overview)
+
+User stories
+============
+
+Junior Dev
+-----------
+1. As a newbie, I want to be able to see a list of questions so that I can see answers from mentors.
+2. As a newbie, I want to be able to see a collection of different mentors' (tweet) advice under a specific question so that I can see a range of answers
+3. As a newbie, I want to see a list of mentors so that I can see who are giving the advice
+4. As a newbie, I can see a mentor's social media links so that I can continue the discourse and connect with them.
+4. As a newbie, I can log in with my Twitter account so that I don't have to create another new account for this website.
+
+Admin
+----------
+
+1. As an admin, I can add the screen name of a mentor into the mentor list so that I can add mentors to the app.
+2. As an admin, I can fetch the latest details about a mentor using the mentor's screen name and the Twitter API so that I can keep the mentor's information current.
+3. As an admin I can fetch the tweets that belong to a particular qestion's hashtag so that I can display it on the question page.
+4. As ad admin, I can fetch and update the tweets that belong to a particular question so that I can keep the answers up to date.
+5. As an admin, I have access to an admin panel so that I can edit and delete all models.
+
+[Return to overview](#overview)
+
+Concept, Design and build
+=========================
+
+DevMentor is the second attempt at solving this problem. The first attempt was trying to connect students and workers in every industry and every career path. The reason I decided to redo this project was because there was no buy-in or benefit for the worker.
+
+This project aims to benefit the mentors as the primary goal (through status and followers on Twitter) while benefitting junior devs in the process. 
+
+Concept
+-------
+
+The starting point for DevMentor began with thinking through why mentors and students would use the app.
+
+<img src="process/wireframe-mentor.png" alt="wireframe" style="width: 350px;"/>
+
+Design
+------
+
+Next simple wireframes to show what the pages of the app would show.
+
+Mentor list page
+
+<img src="process/wireframe-mentor.png" alt="wireframe" style="width: 350px;"/>
+
+Question list page
+
+<img src="process/wireframe-question.png" alt="wireframe" style="width: 350px;"/>
+
+Tweet answers page
+
+<img src="process/wireframe-tweet.png" alt="wireframe" style="width: 350px;"/>
+
+Build (MVP)
+-----
+
+Next the final mvp design.
+
+Mentor list page
+
+<img src="process/mvp-mentor.png" alt="wireframe" style="width: 350px;"/>
+
+Question list page
+
+<img src="process/mvp-question.png" alt="wireframe" style="width: 350px;"/>
+
+Tweet answers page
+
+<img src="process/mvp-tweet.png" alt="wireframe" style="width: 350px;"/>
+
+Database schema design
+===================================
+
+<img src="process/ERD.png" alt="ERD" style="width: 350px;"/>
+
+Gems and Tools used
+===========================================
+* [Devise](https://github.com/plataformatec/devise)
+* [Twitter](https://github.com/sferik/twitter)
+* [Pundit](https://github.com/elabs/pundit)
+* [Rolify](https://github.com/RolifyCommunity/rolify)
+* [Simple_form](https://github.com/plataformatec/simple_form)
+* [Bootstrap-sass](https://github.com/twbs/bootstrap-sass)
+* [Ransack](https://github.com/activerecord-hackery/ransack)
+* [Active-admin](https://github.com/activeadmin/activeadmin)
+* [Oauth Twitter](https://github.com/arunagw/omniauth-twitter)
+* [heroku](https://www.heroku.com)
+* [sketch](https://www.sketchapp.com)
+* [trello](https://trello.com)
+
+[Return to overview](#overview)
+
+Style Guide
+===========
+
+CSS framework
+-------------
+
+I decided to use Bootstrap because:
+
+1. To get a better understanding of Bootstrap in preparation for working in the industry.
+2. To quickly build out an mvp using minimal styles.
+3. Make use of templates available on the web.
+
+Colour
+-----
+
+Colours were used in conjunction with the banner image 
+
+Item | Colour | RGB | HEX  
+---: | -----:| ---:| ---
+Primary 1 | ![Primary](https://github.com/iankhor/files/blob/master/MedReFR/06.%20Styleguide%20-%20Primary%20color%201.png) | (49, 86, 63) | #315685   
+Secondary 1 | ![Secondary 1](https://github.com/iankhor/files/blob/master/MedReFR/07.%20Styleguide%20-%20Secondary%20color%201.png) | (66, 179, 229) | #42B3E5
+Secondary 2 | ![Secondary 2](https://github.com/iankhor/files/blob/master/MedReFR/08.%20Styleguide%20-%20Secondary%20color%202%20copy.png) | (32, 32, 32) | #202020
+Font | ![Font 1](https://github.com/iankhor/files/blob/master/MedReFR/09.%20Styleguide%20-%20Text%20color%201%20copy.png) | (144,144,144) | #909090
+
+Font type
+----
+Google Font Roboto was used for our app. This was in keeping with the existing
+Material theme but also was the perfect choice for a medical app as it is easy
+to read and looks neat and professional without being too bland or serious.
+![Font type](https://github.com/iankhor/files/blob/master/MedReFR/11.%20Styleguide%20-%20Font.png)
+
+Graphics
+--------
+
+I decided to go with using this little guy as the main logo for the project
+
+<img src="process/earthdude.png" alt="wireframe" style="width: 350px;"/>
+
+Image used with attribution from [Vexels](https://www.vexels.com/vectors/preview/142153/friednly-happy-earth-day-cartoon)
+
+Roadblocks
+==========
 
 The biggest challenge for this project was making sure that both parties benefited from this app. Dev Mentor a second attempt at this project. The first project was not sustainable as it required heavy time investment from Mentors.
 
 Dev Mentor aims to solve that problem by using services that mentors already use.
-
-## Wireframes
-
-#### Mentor list page
-
-<img src="process/wireframe-mentor.png" alt="wireframe" style="width: 350px;"/>
-
-#### Question list page
-
-<img src="process/wireframe-question.png" alt="wireframe" style="width: 350px;"/>
-
-#### Tweet answers page
-
-<img src="process/wireframe-tweet.png" alt="wireframe" style="width: 350px;"/>
-
-## User stories
-
-[Trello board](https://trello.com/b/NuJasHA4/dev-mentor)
-
-
-## Entity Relationship Diagram
-
-<img src="process/ERD.png" alt="ERD" style="width: 350px;"/>
 
 
 
