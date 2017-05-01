@@ -22,7 +22,6 @@ Overview
 * [Project management in Trello](#project-management-in-trello)
 * [Outstanding issues](#outstanding-issues)
 
-
 Project brief
 =============
 
@@ -100,10 +99,6 @@ Admin
 Concept, Design and build
 =========================
 
-DevMentor is the second attempt at solving this problem. The first attempt was trying to connect students and workers in every industry and every career path. The reason I decided to redo this project was because there was no buy-in or benefit for the worker.
-
-This project aims to benefit the mentors as the primary goal (through status and followers on Twitter) while benefitting junior devs in the process. 
-
 Concept
 -------
 
@@ -135,15 +130,15 @@ Next the final mvp design.
 
 Mentor list page
 
-<img src="process/mvp-mentor.png" alt="wireframe" style="width: 350px;"/>
+<img src="process/mvp-mentor.png" alt="mvp" style="width: 350px;"/>
 
 Question list page
 
-<img src="process/mvp-question.png" alt="wireframe" style="width: 350px;"/>
+<img src="process/mvp-question.png" alt="mvp" style="width: 350px;"/>
 
 Tweet answers page
 
-<img src="process/mvp-tweet.png" alt="wireframe" style="width: 350px;"/>
+<img src="process/mvp-tweet.png" alt="mvp" style="width: 350px;"/>
 
 Database schema design
 ===================================
@@ -180,39 +175,37 @@ I decided to use Bootstrap because:
 3. Make use of templates available on the web.
 
 Colour
------
-
-Colours were used in conjunction with the banner image 
+----- 
 
 Item | Colour | RGB | HEX  
 ---: | -----:| ---:| ---
-Primary 1 | ![Primary](https://github.com/iankhor/files/blob/master/MedReFR/06.%20Styleguide%20-%20Primary%20color%201.png) | (49, 86, 63) | #315685   
-Secondary 1 | ![Secondary 1](https://github.com/iankhor/files/blob/master/MedReFR/07.%20Styleguide%20-%20Secondary%20color%201.png) | (66, 179, 229) | #42B3E5
-Secondary 2 | ![Secondary 2](https://github.com/iankhor/files/blob/master/MedReFR/08.%20Styleguide%20-%20Secondary%20color%202%20copy.png) | (32, 32, 32) | #202020
-Font | ![Font 1](https://github.com/iankhor/files/blob/master/MedReFR/09.%20Styleguide%20-%20Text%20color%201%20copy.png) | (144,144,144) | #909090
+Banner primary | <img src="process/colour-purp.png"/> | (25,7,41) | #190729
+Banner secondary | <img src="process/colour-blue.png"/> | (51,122,183) | #337AB7
+Button primary | <img src="process/colour-orange.png"/> | (221,81,56) | #DD5138
+Button Secondary | <img src="process/colour-yellow.png"/> | (240,173,78) | #F0AD4E
+Font | <img src="process/colour-grey.png"/> | (64,65,66) | #404142
 
 Font type
 ----
-Google Font Roboto was used for our app. This was in keeping with the existing
-Material theme but also was the perfect choice for a medical app as it is easy
-to read and looks neat and professional without being too bland or serious.
-![Font type](https://github.com/iankhor/files/blob/master/MedReFR/11.%20Styleguide%20-%20Font.png)
+
+<img src="process/dosis-font.png"/>
+
 
 Graphics
 --------
 
 I decided to go with using this little guy as the main logo for the project
 
-<img src="process/earthdude.png" alt="wireframe" style="width: 350px;"/>
+<img src="process/earthdude.png" alt="earthdude" style="width: 350px;"/>
 
 Image used with attribution from [Vexels](https://www.vexels.com/vectors/preview/142153/friednly-happy-earth-day-cartoon)
 
 Roadblocks
 ==========
 
-The biggest challenge for this project was making sure that both parties benefited from this app. Dev Mentor a second attempt at this project. The first project was not sustainable as it required heavy time investment from Mentors.
+DevMentor is the second attempt at solving this problem. The first attempt was trying to connect students and workers in every industry and every career path. The reason I decided to redo this project was because there was no buy-in or benefit for the worker.
 
-Dev Mentor aims to solve that problem by using services that mentors already use.
+This project aims to benefit the mentors as the primary goal (through status and followers on Twitter) while benefitting junior devs in the process.
 
 
 
